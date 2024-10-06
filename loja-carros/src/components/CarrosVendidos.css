@@ -1,0 +1,6 @@
+.carros-vendidos{
+    background-color:brown;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 30px;
+}

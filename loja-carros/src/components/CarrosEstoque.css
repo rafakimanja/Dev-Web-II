@@ -1,0 +1,19 @@
+
+.lista-carros{
+    background-color: blueviolet;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 30px;
+}
+
+.vazio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+}
+
+.vazio p{
+    color: #fff;
+}
