@@ -1,6 +1,49 @@
 #root {
   max-width: 1280px;
+  height: 540px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
+
+.background-form{
+  margin-top: 100px;
+  height: 80px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #ccc;
+  border-radius: 10px;
+}
+
+.background-tarefas{
+  margin-top: 30px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+
+.background-lista{
+  background-color: #6ac1db;
+  margin: 20px 20px;
+  width: 500px;
+  border-radius: 10px;
+  color: black;
+}
+
+#nao{
+  background-color: rgb(236, 72, 72);
+}
+
+.lista-tarefas{
+  width: 100%;
+  margin: 10px 0 10px 0;
+}
+
+

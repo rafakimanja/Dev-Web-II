@@ -1,23 +1,23 @@
-import { useState } from "react"
+import './Form.css'
+import { useState } from 'react'
 
 const Form = ({addTarefa}) => {
 
-    const [inputTarefa, setInputTarefa] = useState("")
+    const [descricao, setDescricao] = useState("")
 
-    const handleInputTarefaChange = e => {
-        setInputTarefa(e.target.value)
+    const handleInputDescricaoChange = e => {
+        setDescricao(e.target.value)
     }
 
     return(
-        <>
-        <div className="form">
-            <input type="text" value={inputTarefa} onChange={handleInputTarefaChange} placeholder="Nova tarefa" />
+        <div className="formulario">
+            <label htmlFor="descricao">Descrição: </label>
+            <input type="text" name="descricao" value={descricao} onChange={handleInputDescricaoChange} placeholder='Digite a nova tarefa...' />
             <button onClick={() => {
-                addTarefa({nome: inputTarefa, feito: false})
-                setInputTarefa("")
-            }} >Adicionar</button>
+                addTarefa({descricao: descricao})
+                setDescricao("")
+                }}>Salvar</button>
         </div>
-        </>
     )
 }
 

@@ -1,0 +1,39 @@
+
+  .filtros{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+  }
+  
+  .filtros li{
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+  }
+  
+  .livro{
+    padding: 0.25rem;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: solid 1px 
+  }
+  
+  .textos{
+    margin-left: 15px;
+    text-align: left;
+  }
+  
+  .botao{
+    margin-left: auto;
+    align-self: flex-end;
+  }
+  
+  .btnLista{
+    height: 30px;
+    width: 160px;
+    cursor: pointer;
+    margin-left: 10px;
+  }

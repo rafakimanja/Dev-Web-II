@@ -1,16 +1,18 @@
-import TarefaRealizada from "./TarefaRealizada"
+import Tarefa from "./Tarefa"
 
+const TarefasRealizadas = ({tarefas, removeTarefa}) => {
 
-const TarefasRealizadas = ({tarefasRealizadas, removeTarefaRealizada}) => {
     return(
+        <>
         <div className="lista-tarefas">
             {
-                tarefasRealizadas.length > 0 ? tarefasRealizadas.map((tarefa) => <TarefaRealizada id={tarefa.id} nome={tarefa.nome} feito={tarefa.feito} removeTarefaRealizada={removeTarefaRealizada} />)
-                : <div className="vazio">
-                    <p>Não há tarefas concluidas</p>
-                </div>
+                tarefas.length > 0 ? 
+                tarefas.map((tarefa) => <Tarefa tarefa={tarefa} removeTarefa={removeTarefa}/>)
+                : <div className="vazio"><p>Não há tarefas realizadas!</p></div>
             }
+            
         </div>
+        </>
     )
 }
 

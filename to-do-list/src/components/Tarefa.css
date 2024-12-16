@@ -1,0 +1,35 @@
+.tarefa{
+    background-color: #fff;
+    display: flex;
+    align-items:center;
+    justify-content:start;
+    margin: 10px;
+    width: 90%;
+    height: 35px;
+    border: solid 1px #808080;
+    border-radius: 10px;
+  }
+  
+  .tarefa input{
+    margin-left: 15px;
+  }
+  
+  input[type="checkbox"]:checked + p {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .tarefa p{
+    margin-left: 5px;
+  }
+
+  .delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 20px;
+    background-color: rgb(247, 50, 50);
+    margin-left: 40%;
+  }
+  

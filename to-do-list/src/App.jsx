@@ -1,48 +1,57 @@
 import { useState } from 'react'
-import Form from './components/Form'
-import TarefasNaoRealizadas from './components/TarefasNaoRealizadas'
+import { v4 as uuidv4 } from 'uuid'
 import TarefasRealizadas from './components/TarefasRealizadas'
+import TarefasNaoRealizadas from './components/TarefasNaoRealizadas'
+import Form from './components/Form'
 import './App.css'
-
-function geraID(){
-  return Math.floor(Math.random() * (1000000 - 1 + 1)) + 1
-}
 
 function App() {
   
-  const [tarefas, setTarefas] = useState([])
-  const [tarefasRealizadas, setTarefasRealizadas] = useState([])
+  const [realizadas, setRealizadas] = useState([])
+
+  const [naoRealizadas, setNaoRealizadas] = useState([])
 
   const addTarefa = tarefa => {
-    setTarefas([...tarefas, {...tarefa, id: geraID()}])
+    setNaoRealizadas((prev) => [...prev, { ...tarefa, id: uuidv4(), status: false }])
   }
 
-  const addTarefaRealizada = (id, nome, feito) => {
-    const tarefaRealizada = tarefas.find(tarefa => tarefas.id == id)
-    if(tarefaRealizada){
-      feito = true
-      setTarefasRealizadas([...tarefasRealizadas, {...tarefaRealizada, nome, feito}])
-    }
+  const addTarefaRealizada = (id) => {
+
+    setNaoRealizadas((prevNaoRealizadas) => {
+
+      const tarefaParaMover = prevNaoRealizadas.find((tarefa) => tarefa.id == id)
+
+      if (tarefaParaMover) {
+  
+        const updatedNaoRealizadas = prevNaoRealizadas.filter((tarefa) => tarefa.id != id)
+   
+        setRealizadas((prevRealizadas) => [...prevRealizadas, { ...tarefaParaMover, status: true }])
+
+        return updatedNaoRealizadas;
+      }
+      return prevNaoRealizadas;
+    })
   }
 
-  const removeTarefaRealizada = id => {
-    setTarefasRealizadas(tarefasRealizadas.filter((tarefa) => tarefa.id != id))
+  const removeTarefa = id => {
+    setRealizadas(realizadas.filter((tarefa) => tarefa.id != id))
   }
+
+
 
   return (
     <>
-    <div className='background'>
-      <h1>Lista de Tarefas</h1>
-      <div className="form-component">
-        <Form addTarefa={addTarefa}/>
+    <div className="background-form">
+      <Form addTarefa={addTarefa}/>
+    </div>
+    <div className="background-tarefas">
+      <div className="background-lista">
+        <h2>Tarefas Realizadas</h2>
+        <TarefasRealizadas tarefas={realizadas} removeTarefa={removeTarefa}/>
       </div>
-      <div className='nao-realizadas'>
-        <h3>Tarefas não Realizadas</h3>
-        <TarefasNaoRealizadas tarefas={tarefas} addTarefaRealizada={addTarefaRealizada}/>
-      </div>
-      <div className="realizadas">
-        <h3>Tarefas Realizadas</h3>
-        <TarefasRealizadas tarefasRealizadas={tarefasRealizadas} removeTarefaRealizada={removeTarefaRealizada} />
+      <div className="background-lista" id='nao'>
+        <h2>Tarefas Não Realizadas</h2>
+        <TarefasNaoRealizadas tarefas={naoRealizadas} addTarefaRealizada={addTarefaRealizada}/>
       </div>
     </div>
     </>
